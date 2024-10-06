@@ -1,0 +1,37 @@
+##Local
+##Get all pokemon
+GET HTTP://LOCALHOST:3000/pokedex
+
+###Get contact by id
+GET HTTP://LOCALHOST:3000/pokedex/670228b1e748b9521e401560
+
+###Create contact
+POST HTTP://LOCALHOST:3000/pokedex HTTP/1.1
+Content-Type: application/json
+
+{
+    "pokemon": "gengar",
+    "type": "ghost",
+    "position": "94"
+}
+
+###PUT contact
+PUT HTTP://LOCALHOST:3000/pokedex/67023649339a7707899a546a HTTP/1.1
+Content-Type: application/json
+
+{
+    "pokemon": "snorlax",
+    "type": "normal",
+    "position": "143"
+}
+
+###DELETE contact
+DELETE HTTP://LOCALHOST:3000/pokedex/67023649339a7707899a546a
+
+
+###Render
+###Get all pokemon
+GET https://cse-341-project1-om3u.onrender.com/pokedex
+
+###Get contact by id
+GET https://cse-341-project1-om3u.onrender.com/pokedex/66efad272954fdde3c23a36c
