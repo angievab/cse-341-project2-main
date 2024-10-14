@@ -3,14 +3,16 @@ const router = require('express').Router();
 
 const pokedexController = require('../controllers/pokedex');
 
+const { isAuthenticated } = require("../middleware/authenticate");
+
 router.get('/', pokedexController.getAll);
 
 router.get('/:id', pokedexController.getSingle);
 
-router.post('/', pokedexController.createPokemon);
+router.post('/', isAuthenticated, pokedexController.createPokemon);
 
-router.put('/:id', pokedexController.updatePokemon);
+router.put('/:id', isAuthenticated, pokedexController.updatePokemon);
 
-router.delete('/:id', pokedexController.deletePokemon);
+router.delete('/:id', isAuthenticated, pokedexController.deletePokemon);
 
 module.exports = router;
