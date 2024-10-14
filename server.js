@@ -15,8 +15,8 @@ app
   .use(bodyParser.json())
   .use(session({
     secret: "secret",
-    resave:false,
-    saveUninitialized:true,
+    resave: false,
+    saveUninitialized: true,
   }))
   //This is the basic express session({..}) initialization.
   .use(passport.initialize())
@@ -56,7 +56,7 @@ passport.deserializeUser((user, done) => {
     done(null, user);
 });
 
-app.get('/', (req, res) => { res.send(req.session.use !== undefined ? `Logged in as ${req.session.user.displayName}` : "Logged Out")});
+app.get('/', (req, res) => { res.send(req.session.user !== undefined ? `Logged in as ${req.session.user.displayName}` : "Logged Out")});
 
 app.get('/github/callback', passport.authenticate('github', {
     failureRedirect: 'api/docs', session: false}),
