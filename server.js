@@ -37,9 +37,9 @@ app
 .use("/", require("./routes/index.js"));
 
 passport.use(new GitHubStrategy({
-    clientID: process.env.GITHUB_CLIENT_ID,
-    clientSecret: process.env.GITHUB_CLIENT_SECRET,
-    callbackURL: process.env.CALLBACK_URL
+    clientID: GITHUB_CLIENT_ID,
+    clientSecret: GITHUB_CLIENT_SECRET,
+    callbackURL: CALLBACK_URL
 },
 function(accessToken, refreshToken, profile, done) {
   //User.findOrCreate({ githubId: profile.id }, function (err, user) {
