@@ -29,10 +29,10 @@ app
       'Origin, X-Requested-With, Content-Type, Accept, Z-Key, Authorization'
     );
     res.setHeader('Access-Control-Allow-Methods', 
-      'GET, POST, PUT, DELETE, OPTIONS');
+      'POST, GET, PUT, PATCH, OPTIONS, DELETE');
     next();
 })
-.use(cors({ methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT']}))
+.use(cors({ methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH']}))
 .use(cors({ origin: '*'}))
 .use("/", require("./routes/index.js"));
 
