@@ -7,8 +7,9 @@ const session = require('express-session');
 const GitHubStrategy = require('passport-github2').Strategy;
 const cors = require('cors');
 
-const port = process.env.PORT || 3000;
 const app = express(); 
+const port = process.env.PORT || 3000;
+
 
 app
   .use(bodyParser.json())
@@ -29,10 +30,10 @@ app
       'Origin, X-Requested-With, Content-Type, Accept, Z-Key, Authorization'
     );
     res.setHeader('Access-Control-Allow-Methods', 
-      'POST, GET, PUT, PATCH, OPTIONS, DELETE');
+      'POST, GET, PUT, OPTIONS, DELETE');
     next();
 })
-.use(cors({ methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH']}))
+.use(cors({ methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT']}))
 .use(cors({ origin: '*'}))
 .use("/", require("./routes/index.js"));
 
