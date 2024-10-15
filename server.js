@@ -1,15 +1,14 @@
-const dotenv = require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
+const dotenv = require('dotenv').config();
 const mongodb = require('./data/database');
 const passport = require('passport');
 const session = require('express-session');
 const GitHubStrategy = require('passport-github2').Strategy;
 const cors = require('cors');
 
-const app = express();
-
 const port = process.env.PORT || 3000;
+const app = express(); 
 
 app
   .use(bodyParser.json())
@@ -59,13 +58,13 @@ passport.deserializeUser((user, done) => {
 app.get('/', (req, res) => { res.send(req.session.user !== undefined ? `Logged in as ${req.session.user.displayName}` : "Logged Out")});
 
 app.get('/github/callback', passport.authenticate('github', {
-    failureRedirect: 'api/docs', session: false}),
+    failureRedirect: '/api-docs', session: false}),
     (req, res) => {
         req,session.user = req.user;
         res.redirect('/');
     });
 
-mongodb.initDb((err) => {
+mongodb.initDb((err, mongodb) => {
     if(err) {
         console.log(err);
     }
